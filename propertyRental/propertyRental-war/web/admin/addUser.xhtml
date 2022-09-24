@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+
+    </h:head>
+    <h:body>
+        <ui:include src="includes/header.xhtml" />
+        <div class="page-container row-fluid">
+            <ui:include src="includes/sidebar.xhtml"/>
+            <div class="page-content">
+                <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+                <div id="portlet-config" class="modal hide">
+                    <div class="modal-header">
+                        <button data-dismiss="modal" class="close" type="button"></button>
+                        <h3>Widget Settings</h3>
+                    </div>
+                    <div class="modal-body"> Widget settings form goes here </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="content">
+                    <div class="page-title"> <i class="fa fa-user"></i>
+                        <h3> User </h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="grid simple form-grid">
+                                <div class="grid-title no-border">
+                                    <h4> Add User </h4>
+                                    <div class="tools">
+                                        <a href="javascript:;" class="collapse"></a>
+                                        <a href="javascript:;" class="remove"></a>
+                                    </div>
+                                </div>
+                                <div class="grid-body no-border">
+                                    <h:form class="form-no-horizontal-spacing" id="form-condensed" enctype="multipart/form-data">
+                                        <div class="row column-seperation">
+                                            <div class="col-md-6">
+                                                <div class="row form-row">
+                                                    <div class="col-md-8">
+                                                        <div class="form-group">
+                                                            <label class="form-label">First Name </label>
+                                                            <h:inputText class="form-control" autocomplete="off" value="#{userBean.userFname}" id="userFname" pt:placeholder="Enter First Name..." required="true" requiredMessage="First name is required!"/>
+                                                            <h:message for="userFname" style="color: red;"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Last Name </label>
+                                                            <h:inputText class="form-control" autocomplete="off" value="#{userBean.userLname}" id="userLname" pt:placeholder="Enter Last Name..." required="true" requiredMessage="Last name is required!"/>
+                                                            <h:message for="userLname" style="color: red;"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-label">E-mail</label>
+                                                            <h:inputText class="form-control" autocomplete="off" value="#{userBean.userEmail}" id="email" pt:placeholder="Enter E-mail..." required="true" requiredMessage="Email is required!"/>
+                                                            <h:message for="email" style="color: red;"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Password</label>
+                                                            <h:inputSecret value="#{userBean.userPassword}" autocomplete="off" id="password" class="form-control" required="true" requiredMessage="Password is required!"/>
+                                                            <h:message for="password" style="color: red;"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row form-row">
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Gender</label>
+                                                            <div class="radio radio-success">
+                                                                <h:selectOneRadio value="#{userBean.userGender}" id="gender" required="true" requiredMessage="Select Gender.."> 
+                                                                    <f:selectItem itemValue="Male" itemLabel="Male"/>
+                                                                    <f:selectItem itemValue="Female" itemLabel="Female"/>
+                                                                    
+                                                                </h:selectOneRadio>
+                                                                <h:message for="gender" style="color: red;"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+<!--                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label">User Type</label>
+                                                            <h:selectOneMenu value="#{userBean.userType}" id="type" class="select2-choice form-control" required="true" requiredMessage="Please select user type..">
+                                                                <f:selectItem itemLabel="Select"></f:selectItem>
+                                                                <f:selectItem itemValue="Property Owner" itemLabel="Property Owner"/>
+                                                                <f:selectItem itemValue="Client" itemLabel="Client"/>
+                                                                
+                                                            </h:selectOneMenu>
+                                                            <h:message for="type" style="color: red;"/>
+                                                        </div>
+                                                    </div>-->
+                                                </div>
+                                                <div class="row form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Contact No.</label>
+                                                            <h:inputText class="form-control" autocomplete="off" value="#{userBean.userContactNo}" id="contact" pt:placeholder="Enter Contact No..." required="true" requiredMessage="Contact No. is required!"/>
+                                                            <h:message for="contact" style="color: red;"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Photo</label>
+                                                            <h:inputFile value="#{userBean.file}"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-actions">
+                                            <div class="pull-right">
+                                                
+                                                    <h:commandButton  value="Submit" class="btn btn-success btn-cons" action="#{userBean.insertUser_click()}">
+                                                    </h:commandButton>
+                                                    <h:commandButton  value="Cancel" class="btn btn-white btn-cons" action="#{userBean.clear()}">
+                                                    </h:commandButton>
+                                                
+<!--                                                <c:if test="#{userBean.userIDPK != 0}">
+                                                    <h:commandButton class="btn btn-info btn-cons" value="Update" action="#{userBean.updateUser_click()}"/>
+                                                </c:if>-->
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <ui:include src="includes/footer.xhtml" />
+    </h:body>
+</html>
+

@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Real House</title>
+    </h:head>
+    <h:body>
+        <!-- BEGIN SIDEBAR -->
+        <div class="page-sidebar " id="main-menu">
+            <!-- BEGIN MINI-PROFILE -->
+            <div class="page-sidebar-wrapper scrollbar-dynamic" id="main-menu-wrapper">
+                <div class="user-info-wrapper sm">
+                    <div class="profile-wrapper sm">
+                        <img src="/propertyRental-war/uploads/#{session.getAttribute('userImage')}" style="height: 52px; width: 52px;"/>
+                    </div>
+                    <div class="user-info sm">
+                        <br/>
+                        <div class="username">#{session.getAttribute('userFname')} <span class="semi-bold">#{session.getAttribute('userLname')}</span></div>
+                        
+                    </div>
+                </div>
+                <!-- END MINI-PROFILE -->
+                <!-- BEGIN SIDEBAR MENU -->
+                <br/><br/>
+                <ul>
+                    <li> 
+                        <a href="index.xhtml"><i class="material-icons">home</i> <span class="title">Dashboard</span> <span class="selected"></span>  </a>   
+                    </li>
+                    <li>
+                        <a href="javascript:;"> <i class="fa fa-user"></i> <span class="title">User</span> <span class=" arrow"></span> </a>
+                        <ul class="sub-menu">
+                            <li> <a href="addUser.xhtml">Add User </a> </li>
+                            <li> <a href="showUser.xhtml">Show Users</a> </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;"> <i class="fa fa-gears"></i> <span class="title">Amenity</span> <span class=" arrow"></span> </a>
+                        <ul class="sub-menu">
+                            <li> <a href="addAmenity.xhtml">Add Amenity </a> </li>
+                            <li> <a href="showAmenity.xhtml">Show Amenity</a> </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;"> <i class="fa fa-building"></i> <span class="title">Property Type</span> <span class=" arrow"></span> </a>
+                        <ul class="sub-menu">
+                            <li> <a href="addPropertyType.xhtml">Add Property Type </a> </li>
+                            <li> <a href="showPropertyType.xhtml">Show Property Types</a> </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;"> <i class="fa fa-building"></i> <span class="title">Property</span> <span class=" arrow"></span> </a>
+                        <ul class="sub-menu">
+                            <li> <a href="addProperty.xhtml">Add Property </a> </li>
+                            <li> <a href="showProperty.xhtml">Show Properties</a> </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="showReviewRating.xhtml"> <i class="fa fa-star"></i> <span class="title">Reviews &amp; Ratings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="showUserRequest.xhtml"> <i class="fa fa-envelope"></i> <span class="title">User Request</span>
+                        </a>
+                    </li>
+<!--                    <li>
+                        <a href="chats.xhtml"> <i class="fa fa-comments-o"></i> <span class="title">Chats</span>
+                        </a>
+                    </li>-->
+                    <li>
+                        <a href="javascript:;"> <i class="fa fa-clone"></i> <span class="title">State</span> <span class=" arrow"></span> </a>
+                        <ul class="sub-menu">
+                            <li> <a href="addState.xhtml">Add State </a> </li>
+                            <li> <a href="showState.xhtml">Show State</a> </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;"> <i class="fa fa-clone"></i> <span class="title">City</span> <span class=" arrow"></span> </a>
+                        <ul class="sub-menu">
+                            <li> <a href="addCity.xhtml">Add City </a> </li>
+                            <li> <a href="showCity.xhtml">Show City</a> </li>
+                        </ul>
+                    </li><!-- comment -->
+                    <li>
+                        <a href="javascript:;"> <i class="fa fa-clone"></i> <span class="title">Area</span> <span class=" arrow"></span> </a>
+                        <ul class="sub-menu">
+                            <li> <a href="addArea.xhtml">Add Area </a> </li>
+                            <li> <a href="showArea.xhtml">Show Area</a> </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="reports.xhtml"> <i class="fa fa-file-pdf-o"></i> <span class="title">Reports</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="clearfix"></div>
+                <!-- END SIDEBAR MENU -->
+            </div>
+        </div>
+        <a href="#" class="scrollup">Scroll</a>
+        
+        <!-- END SIDEBAR -->
+    </h:body>
+</html>
+

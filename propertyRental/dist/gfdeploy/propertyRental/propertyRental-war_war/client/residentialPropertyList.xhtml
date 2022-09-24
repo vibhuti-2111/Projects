@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+
+    </h:head>
+    <h:body>
+        <h:form>
+            <ui:include src="includes/header.xhtml"></ui:include>
+
+            <!-- Sub banner start -->
+            <div class="sub-banner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <h1>Gallery</h1>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="breadcrumb-area">
+                                <ul>
+                                    <li><a href="index.html">Index</a></li>
+                                    <li><span>/</span>Gallery</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sub Banner end -->
+
+            <!-- Photo gallery start -->
+            <div class="photo-gallery content-area">
+                <div class="container">
+                    
+                    <ul class="list-inline-listing filters filteriz-navigation">
+                        <li class="active btn filtr-button filtr" data-filter="all">All</li>
+                        <ui:repeat value="#{propertyTypeBean.showPropertyByType('Residential')}" var="item">
+                            <li data-filter="#{item.propertyTypeIDPK}" class="btn btn-inline filtr-button filtr">#{item.propertySubTypeName}</li>
+                        </ui:repeat>
+                    </ul>
+                    <div class="row filter-portfolio">
+                        <div class="cars">
+                            <ui:repeat value="#{propertyBean.ListPropertyByType('Residential')}"  var="data">
+                                <div class="col-lg-5 col-md-6 col-sm-12 filtr-item" data-category="#{data.propertyTypeIDFK.propertyTypeIDPK}" style="margin-left: 100px; margin-right: 100px;">
+                                    <div class="property-box">
+                                        <div class="property-thumbnail">
+                                            <h:commandLink action="/client/singleProperty.xhtml?faces-redirect=true" actionListener="#{propertyBean.addPropertyPK(data.propertyIDPK)}" class="property-img">
+                                                
+                                                <div class="price-ratings-box">
+                                                    <h4 class="price">
+                                                        #{data.propertyRent}<span>/mo</span>
+                                                    </h4>
+                                                </div>
+                                                <div class="property-overflow">
+                                                    <img src="/propertyRental-war/uploads/#{data.mainPropertyImage}" class="img-fluid" style="height: 470px; width: 640px;"/>
+                                                </div>
+                                            </h:commandLink>
+                                        </div>
+                                        <div class="detail">
+                                            <h1 class="title">
+                                                <h:commandLink action="/client/singleProperty.xhtml?faces-redirect=true" actionListener="#{propertyBean.addPropertyPK(data.propertyIDPK)}">#{data.propertyName}</h:commandLink>
+                                            </h1>
+                                            <div class="location">
+                                                <h:commandLink action="/client/singleProperty.xhtml?faces-redirect=true" actionListener="#{propertyBean.addPropertyPK(data.propertyIDPK)}">
+                                                    <i class="fa fa-map-marker"></i>#{data.propertyFullAddress}, #{data.areaIDFK.areaName}
+                                                </h:commandLink>
+                                            </div>
+                                            <ul class="facilities-list clearfix">
+                                                <ui:repeat value="#{propertyBean.getFeaturesList(data.features)}" var="feature">
+                                                    <li>
+                                                        <i class="fa fa-hand-o-right"></i> #{feature}
+                                                    </li>
+                                                </ui:repeat>
+                                            </ul>
+                                        </div>
+                                        <div class="footer clearfix">
+                                            <div class="pull-left agent">
+                                                <div class="agent">
+                                                    <div class="user">
+                                                        <a href="#">
+                                                            <img src="/propertyRental-war/uploads/#{data.userIDFK.userImage}" alt="avatar"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="user-name">
+                                                        <p><a href="#">#{data.userIDFK.userFname} #{data.userIDFK.userLname}</a> </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="pull-right days">
+                                                <p><i class="flaticon-time"></i> #{propertyBean.setDateFormat(data.addedDate)} </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ui:repeat>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Photo gallery end -->
+
+
+            <ui:include src="includes/footer.xhtml"></ui:include>
+        </h:form>
+    </h:body>
+</html>
+

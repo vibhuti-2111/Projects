@@ -1,0 +1,310 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+
+    </h:head>
+    <h:body>
+        <ui:include src="includes/header.xhtml"></ui:include>
+        <div class="page_loader"></div>
+
+        <!-- Banner start -->
+        <div class="banner" id="banner">
+            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item item-bg active">
+                        <img class="d-block w-100 h-100" src="client/assets/img/banner/img-2.jpg" alt="banner"/>
+                        <div class="carousel-caption banner-slider-inner d-flex h-100 text-start">
+                            <div class="carousel-content container align-self-center">
+                                <div class="banner-info2">
+                                    <div class="text-center">
+                                        <h3>Find Your Home To Suit Your Lifestyle</h3>
+                                        <p>Find new &amp; featured property located in your local city.</p>
+                                        <a class="btn-2" href="client/commercialPropertyList.xhtml">Get Started With Commercial Properties</a>
+                                        <a class="btn-1" href="client/residentialPropertyList.xhtml"><span>Residential Properties</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item item-bg">
+                        <img class="d-block w-100 h-100" src="client/assets/img/banner/img-3.jpg" alt="banner"/>
+                        <div class="carousel-caption banner-slider-inner d-flex h-100 text-start">
+                            <div class="carousel-content container align-self-center">
+                                <div class="t-left banner-info2">
+                                    <div class="text-r">
+                                        <h3>Find Your Amazing Real House</h3>
+                                        <p>Find new &amp; featured property located in your local city.</p>
+                                        <a class="btn-2" href="client/commercialPropertyList.xhtml">Get Started With Commercial Properties</a>
+                                        <a class="btn-1" href="client/residentialPropertyList.xhtml"><span>Residential Properties</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <!-- Banner end -->
+
+        <!-- Search options start -->
+        <div class="search-options-btn-area2">
+            <div class="search-options-icon">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h3>Search Options</h3>
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                <span class="d-none">d</span>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="search-section new-search search-area bg-grea animated fadeInDown">
+                                                <div class="container">
+                                                    <div class="search-section-area">
+                                                        <div class="search-area-inner">
+                                                            <div class="search-contents">
+                                                                <form method="GET">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12">
+                                                                            <h5>Features</h5>
+                                                                        </div>
+                                                                        
+                                                                        <div class="col-lg-12">
+                                                                            <div class="form-group">
+                                                                                <select class="selectpicker search-fields" name="property-type">
+                                                                                    <option>Property Type</option>
+                                                                                    <option>Apartment</option>
+                                                                                    <option>Family House</option>
+                                                                                    <option>Modern Villa</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                    <div class="row mb-20">
+                                                                        <div class="col-lg-3 col-md-6 col-sm-6"></div>
+                                                                        <div class="col-lg-3 col-md-6 col-sm-6"></div>
+                                                                        <div class="col-lg-3 col-md-6 col-sm-6"></div>
+                                                                        <div class="col-lg-3 col-md-6 col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <button class="search-button">Search</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Search options end -->
+
+        <!-- Featured Properties start -->
+        <div class="featured-properties content-area-9 comon-slick">
+            <div class="container">
+                <!-- Main title -->
+                <div class="main-title">
+                    <p>Best Rent Properties</p>
+                    <h1>Featured Properties</h1>
+                </div>
+                <div class="slick row comon-slick-inner csi3 wow fadeInUp delay-04s" data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
+                    <ui:repeat value="#{propertyBean.showTopProperties()}" var="topprop">
+                        <div class="item slide-box">
+                            <div class="property-box">
+                                <div class="property-thumbnail">
+                                    <h:commandLink action="/client/singleProperty.xhtml?faces-redirect=true" actionListener="#{propertyBean.addPropertyPK(data.propertyIDPK)}" class="property-img">
+                                        <div class="price-ratings-box">
+                                            <h4 class="price">
+                                                #{topprop.propertyRent}<span>/mo</span>
+                                            </h4>
+                                        </div>
+                                        <div class="property-overflow">
+                                            <img src="/propertyRental-war/uploads/#{topprop.mainPropertyImage}" style="height: 350px; width: 650px;" class="img-fluid"/>
+                                        </div>
+                                    </h:commandLink>
+                                </div>
+                                <div class="detail">
+                                    <h1 class="title">
+                                        <h:commandLink action="/client/singleProperty.xhtml?faces-redirect=true" actionListener="#{propertyBean.addPropertyPK(data.propertyIDPK)}" class="property-img">#{topprop.propertyName}</h:commandLink>
+                                    </h1>
+                                    <div class="location">
+                                        <h:commandLink action="/client/singleProperty.xhtml?faces-redirect=true" actionListener="#{propertyBean.addPropertyPK(data.propertyIDPK)}" class="property-img">
+                                            <i class="fa fa-map-marker"></i>#{topprop.propertyShortAddress}, #{topprop.areaIDFK.areaName}
+                                        </h:commandLink>
+                                    </div>
+                                    <ul class="facilities-list clearfix">
+                                        <ui:repeat value="#{propertyBean.getFeaturesList(topprop.features)}" var="feature">
+                                            <li>
+                                                <i class="lnr lnr-pointer-right"></i> #{feature}
+                                            </li>
+                                        </ui:repeat>
+                                    </ul>
+                                </div>
+                                <div class="footer clearfix">
+                                    <div class="pull-left agent">
+                                        <div class="agent">
+                                            <div class="user">
+                                                <a href="#">
+                                                    <img src="/propertyRental-war/uploads/#{topprop.userIDFK.userImage}" alt="avatar"/>
+                                                </a>
+                                            </div>
+                                            <div class="user-name">
+                                                <p><a href="#">#{topprop.userIDFK.userFname} #{topprop.userIDFK.userLname}</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pull-right days">
+                                        <p><i class="flaticon-time"></i> #{propertyBean.setDateFormat(topprop.addedDate)}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ui:repeat>
+                </div>
+                <div class="text-center">
+                    <a href="residentailPropertyList.xhtml" class="button btn-3">
+                        Browse More Properties
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Featured Properties end -->
+
+        <!-- Service section 2 start -->
+        <div class="services-3 bg-grea-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 align-self-center wow fadeInLeft delay-04s">
+                        <div class="text">
+                            <div class="main-title mt3">
+                                <p>Our Expertise</p>
+                                <h1>Why Choose Us</h1>
+                            </div>
+                            <P class="px">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</P>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 wow fadeInRight delay-04s">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="service-info-2">
+                                    <div class="number">1</div>
+                                    <div class="icon">
+                                        <i class="flaticon-apartment"></i>
+                                    </div>
+                                    <div class="service-info-2-ditels">
+                                        <h3><a href="services-1.html">Apartments</a></h3>
+                                        <P>The area is bike friendly with close proximity to down town so can ride on well-lit, tree-line strips to most local destination, including grocery store and neigbourhood parks.</P>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="service-info-2">
+                                    <div class="number">2</div>
+                                    <div class="icon">
+                                        <i class="flaticon-coins"></i>
+                                    </div>
+                                    <div class="service-info-2-ditels">
+                                        <h3><a href="services-1.html">Commercial</a></h3>
+                                        <P>It refers to the immovable property used for industry. it refers to your building that house businesses, land intended to make profit and larger residential rental property. </P>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="service-info-2">
+                                    <div class="number">3</div>
+                                    <div class="icon">
+                                        <i class="flaticon-internet"></i>
+                                    </div>
+                                    <div class="service-info-2-ditels">
+                                        <h3><a href="services-1.html">Villa's</a></h3>
+                                        <P>A beautiful stone house next to the sea, it is for 5-6 people it is near the beach and mile from the central.</P>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="service-info-2">
+                                    <div class="number">4</div>
+                                    <div class="icon">
+                                        <i class="fa fa-home"></i>
+                                    </div>
+                                    <div class="service-info-2-ditels">
+                                        <h3><a href="services-1.html">Houses</a></h3>
+                                        <P>Houses are single unit residential building.</P>
+                                        <p><br/> </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Service section 2 end -->
+
+<!-- Testimonial 3 start -->
+        <div class="testimonial-3 comon-slick" >
+            <div class="container">
+                <div class="main-title">
+                    <p>Testimonials</p>
+                    <h1>Customer Reviews</h1>
+                </div>
+                <div class="slick row comon-slick-inner" data-slick='{"slidesToShow": 2, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 1}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
+                    <ui:repeat value="#{reviewRatingBean.showTopReviewList()}" var="reqs">
+                    <div class="item slide-box">
+                        <div class="testimonial-inner">
+                            <div class="content-box">
+                                <div class="user">
+                                    <a href="#">
+                                        <img src="/propertyRental-war/uploads/#{reqs.userIDFK.userImage}" alt="avatar" style="height: 90px; width: 100px;"/>
+                                    </a>
+                                </div>
+                                <div class="testimonial-info">
+                                    <h3>#{reqs.userIDFK.userFname} #{reqs.userIDFK.userLname}</h3>
+                                    <div class="rating">
+                                        <p:rating value="#{reqs.rating}" readonly="true"/>
+                                        
+                                    </div>
+                                    <p>#{reqs.review} </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        </ui:repeat>
+                </div>
+            </div>
+        </div>
+        <!-- Testimonial 3 end -->
+        <ui:include src="includes/footer.xhtml"></ui:include>
+
+
+    </h:body>
+</html>
+

@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+
+    </h:head>
+    <h:body>
+        <ui:include src="includes/header.xhtml" />
+
+        <div class="page-container row-fluid">
+            <ui:include src="includes/sidebar.xhtml"/>
+            <div class="page-content">
+                <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+                <div id="portlet-config" class="modal hide">
+                    <div class="modal-header">
+                        <button data-dismiss="modal" class="close" type="button"></button>
+                        <h3>Widget Settings</h3>
+                    </div>
+                    <div class="modal-body">Widget settings form goes here</div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="content">
+                    <div class="page-title"> <i class="fa fa-building"></i>
+                        <h3>Properties </h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="grid simple ">
+                                        <div class="grid-title no-border">
+                                            <h4>Property Details</h4>
+                                            <div class="tools">
+                                                <a href="javascript:;" class="collapse"></a>
+                                                <a href="javascript:;" class="remove"></a>
+                                            </div>
+                                        </div>
+                                        <div class="grid-body no-border">
+                                            <h:form>
+                                                <h:commandLink class="btn btn-primary" style="margin-left:12px" id="addState" action="/admin/addProperty.xhtml" value="Add Property"></h:commandLink><!-- comment -->
+                                                <br/><br/>
+                                                <h:dataTable class="table table-hover no-more-tables" value="#{propertyBean.show_property()}" var="data">
+                                                    <h:column>
+                                                        <div style="width: 50px;">
+                                                        <f:facet name="header" > ID </f:facet>
+                                                            #{c=c+1}
+                                                        </div>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header"> Property Image </f:facet>
+                                                        <img src="/propertyRental-war/uploads/#{data.mainPropertyImage}" style="width: 150px;height: 150px;border: 3px;"/>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <div style="width: 200px;">
+                                                            <f:facet name="header"> Basic Information </f:facet>
+                                                            <b> Property Name : </b> #{data.propertyName} <br/>
+    <!--                                                        <b> Property Description : </b> #{data.propertyDescription} <br/>-->
+                                                            <b> Property Type : </b> #{data.propertyTypeIDFK.propertyTypeName} <br/>
+                                                            <b> Is available : </b> #{data.isAvailable} <br/>
+                                                        </div>
+                                                    </h:column> 
+                                                    <h:column>
+                                                        <div style="width: 230px;">
+                                                            <f:facet name="header"> Postal &amp; Rental Detail </f:facet>
+                                                            <b> Property Rent : </b> #{data.propertyRent} <br/>
+                                                            <b> Property Advance : </b> #{data.propertyAdvanceRent} <br/>
+                                                            <b> Address : </b>
+                                                            #{data.propertyFullAddress}, <br/> &nbsp; #{data.areaIDFK.areaName}, &nbsp; #{data.areaIDFK.cityIDFK.cityName}, &nbsp; #{data.areaIDFK.cityIDFK.stateIDFK.stateName}
+                                                        </div>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <div style="width: 130px;">
+                                                            <f:facet name="header"> Facilities </f:facet>
+                                                            <b> Amenities : </b> #{data.features} 
+                                                        </div>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header"> Action </f:facet>
+                                                        <br/>
+
+
+                                                        <h:commandLink action="#{propertyBean.isAvailable_Click(data.propertyIDPK, data.isAvailable == 1 ? '0' :'1' )}" class="label #{data.isAvailable == 1 ? 'label-mysuccess' : 'label-danger'}" style="padding: 11px;" ><i class="fa fa-info"></i></h:commandLink> &nbsp;&nbsp;&nbsp;
+
+                                                        <h:commandLink  action="/admin/propertyImage.xhtml" actionListener="#{propertyImageBean.addPropertyFK(data.propertyIDPK)}" class="label label-warning" style="padding: 11px;"><i class="fa fa-picture-o"></i></h:commandLink> &nbsp;&nbsp;&nbsp;
+
+                                                        <h:commandLink action="#{propertyBean.searchProperty_click(data.propertyIDPK)}" class="label label-success" style="padding: 11px;" ><i class="fa fa-pencil"></i></h:commandLink> &nbsp;&nbsp;&nbsp;
+                                                        <h:commandLink action="#{propertyBean.deleteProperty_click(data.propertyIDPK)}" class="label label-important" style="padding: 11px;" ><i class="fa fa-trash"></i></h:commandLink>
+                                                    </h:column>
+                                                </h:dataTable>
+                                            </h:form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END PAGE -->
+            </div>
+        </div>
+        <ui:include src="includes/footer.xhtml" />
+    </h:body>
+</html>
+

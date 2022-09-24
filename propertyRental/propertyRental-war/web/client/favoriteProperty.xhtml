@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+
+    </h:head>
+    <h:body>
+        <ui:include src="includes/header.xhtml"></ui:include>
+        <div class="page_loader"></div>
+        <!-- Sub banner start -->
+        <div class="sub-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <h1>Favorite Property</h1>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="breadcrumb-area">
+                            <ul>
+                                <li><a href="index.xhtml">Index</a></li>
+                                <li><span>/</span>Favorite Property</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sub Banner end -->
+
+        <!-- My Property start -->
+        <div class="my-properties content-area">
+            <div class="container">
+                <h:form enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-12 col-sm-12">
+                            <!-- Avatar start -->
+                            <div class="edit-profile-photo">
+                                <img src="/propertyRental-war/uploads/#{userBean.grfile}" style="height: 450px; width: 305px;" class="img-fluid"/>
+                                <div class="change-photo-btn">
+                                    <div class="photoUpload">
+                                        <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                        <h:inputFile value="#{userBean.file}" class="upload"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Avatar end -->
+                            <!-- My account box start -->
+                            <div class="my-account-box">
+                                <ul>
+                                    <li>
+                                        <a href="myProfile.xhtml" class="active">
+                                            <i class="flaticon-people"></i>My Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="favoriteProperty.xhtml">
+                                            <i class="flaticon-favorite"></i>Favorite Property
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="myProperty.xhtml">
+                                            <i class="flaticon-internet"></i>My Property
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="submitProperty.xhtml">
+                                            <i class="flaticon-cross"></i>Submit New Property
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="changePassword.xhtml">
+                                            <i class="flaticon-lock"></i>Change Password
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <h:commandLink action="#{loginManagedBean.logout()}">
+                                            <i class="flaticon-exit"></i> log out
+                                        </h:commandLink>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- My account box end -->
+                        </div>
+                        <div class="col-lg-9 col-md-12 col-sm-12">
+                            <div class="my-address">
+                                <h3 class="heading-2">Favorite Property</h3>
+                                <div class="my-properties">
+
+                                    <h:dataTable value="#{userRequestBean.showRequestByUser()}" class="manage-table" var="data">
+                                        <tbody class="responsive-table">
+                                            <h:column>
+                                                <f:facet name="header"> Favorite Property </f:facet>
+                                                <div class="listing-photoo h-pt-0" style="width: 180px;">
+                                                    <a href="single-property.html">
+                                                        <img src="/propertyRental-war/uploads/#{data.propertyIDFK.mainPropertyImage}" style="height: 120px; width: 180px;" class="img-fluid"/>
+                                                    </a>
+                                                </div>
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">         </f:facet>
+                                                <div class="title-container" style="width: 450px;">
+                                                    <h5><h:commandLink action="/client/singleProperty.xhtml?faces-redirect=true" actionListener="#{propertyBean.addPropertyPK(data.propertyIDFK.propertyIDPK)}" class="property-img">#{data.propertyIDFK.propertyName}</h:commandLink></h5>
+                                                    <h6><span>#{data.propertyIDFK.propertyRent}</span> / monthly</h6>
+                                                    <p>
+                                                        <i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i> 
+                                                        #{data.propertyIDFK.propertyShortAddress}, #{data.propertyIDFK.areaIDFK.areaName} 
+                                                    </p>
+                                                </div>
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">Date</f:facet>
+                                                <div class="date" style="width: 100px;">
+                                                    #{propertyBean.setDateFormat(data.propertyIDFK.addedDate)}
+                                                </div>
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header"> Action </f:facet>
+                                                <div class="action" style="width: 130px;">
+                                                    <a href="https://api.whatsapp.com/send?phone=#{data.propertyIDFK.userIDFK.userContactNo.toString()}" target="_blank"> <i class="fa fa-whatsapp"></i> Contact Owner</a>
+                                                </div>
+                                            </h:column>
+<!--                                            <h:column>
+                                                <f:facet name="header"> Action </f:facet>
+                                                <div class="action" style="width: 80px;">
+                                                    <h:commandLink actionListener="#{chatBean.addProperty(data.propertyIDFK.propertyIDPK, data.propertyIDFK.userIDFK.userIDPK)}" class="fa fa-comments" value=" Chat" action="/client/chat.xhtml?faces-redirect=true"/>
+                                                </div>
+                                            </h:column>-->
+                                        </tbody>
+                                    </h:dataTable>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+        <!-- My Property end -->
+        <ui:include src="includes/footer.xhtml"></ui:include>
+    </h:body>
+</html>
+

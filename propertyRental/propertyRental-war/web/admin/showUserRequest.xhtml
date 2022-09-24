@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        
+    </h:head>
+    <h:body>
+        <ui:include src="includes/header.xhtml" />
+        <div class="page-container row-fluid">
+            <ui:include src="includes/sidebar.xhtml"/>
+            <div class="page-content">
+                <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+                <div id="portlet-config" class="modal hide">
+                    <div class="modal-header">
+                        <button data-dismiss="modal" class="close" type="button"></button>
+                        <h3>Widget Settings</h3>
+                    </div>
+                    <div class="modal-body">Widget settings form goes here</div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="content">
+                    <div class="page-title"> <i class="fa fa-envelope"></i>
+                        <h3>User's Request </h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="grid simple ">
+                                        <div class="grid-title no-border">
+                                            <h4>User Requests Details</h4>
+                                            <div class="tools">
+                                                <a href="javascript:;" class="collapse"></a>
+                                                <a href="javascript:;" class="remove"></a>
+                                            </div>
+                                        </div>
+                                        <div class="grid-body no-border">
+                                            <h:form>
+
+                                                <h:dataTable class="table table-hover no-more-tables" value="#{userRequestBean.show_userRequestList()}" var="data">
+                                                    <h:column>
+                                                        <f:facet name="header" > Property ID </f:facet>
+                                                             #{data.propertyIDFK.propertyIDPK}
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header"> Property Name </f:facet>
+                                                            #{data.propertyIDFK.propertyName}
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header"> Status </f:facet>
+                                                        <div class="label #{data.status == 0 ? 'label-danger' : 'label-mysuccess'}">
+                                                            #{data.status == 0 ? 'Pending' : 'Conform'}
+                                                            </div>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header"> Request By </f:facet>
+                                                            #{data.userIDFK.userFname} #{data.userIDFK.userLname}
+                                                    </h:column>
+                                                    
+                                                </h:dataTable>
+                                            </h:form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END PAGE -->
+            </div>
+        </div>
+        <ui:include src="includes/footer.xhtml" />
+    </h:body>
+</html>
+

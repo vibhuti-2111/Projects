@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title> Real House</title>
+    </h:head>
+    <h:body>
+        <head>
+            <title> Real House </title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <meta charset="utf-8"/>
+
+            <!-- External CSS libraries -->
+            <link rel="stylesheet" type="text/css" href="../client/assets/css/bootstrap.min.css"/>
+            <link rel="stylesheet" type="text/css" href="../client/assets/css/animate.min.css"/>
+            <link rel="stylesheet" type="text/css" href="../client/assets/css/bootstrap-submenu.css"/>
+            <link rel="stylesheet" type="text/css" href="../client/assets/css/bootstrap-select.min.css"/>
+            <link rel="stylesheet" href="../client/assets/css/leaflet.css" type="text/css"/>
+            <link rel="stylesheet" href="../client/assets/css/map.css" type="text/css"/>
+            <link rel="stylesheet" type="text/css" href="../client/assets/fonts/font-awesome/css/font-awesome.min.css"/>
+            <link rel="stylesheet" type="text/css" href="../client/assets/fonts/flaticon/font/flaticon.css"/>
+            <link rel="stylesheet" type="text/css" href="../client/assets/fonts/linearicons/style.css" />
+            <link rel="stylesheet" type="text/css"  href="../client/assets/css/jquery.mCustomScrollbar.css"/>
+            <link rel="stylesheet" type="text/css"  href="../client/assets/css/dropzone.css"/>
+            <link rel="stylesheet" type="text/css"  href="../client/assets/css/slick.css"/>
+
+            <!-- Custom stylesheet -->
+            <link rel="stylesheet" type="text/css" href="../client/assets/css/sidebar.css"/>
+            <link rel="stylesheet" type="text/css" href="../client/assets/css/style.css"/>
+            <link rel="stylesheet" type="text/css" id="style_sheet" href="../client/assets/css/skins/default.css"/>
+
+            <!-- Favicon icon -->
+            <link rel="shortcut icon" href="../client/assets/img/favicon.ico" type="image/x-icon" />
+
+            <!-- Google fonts -->
+            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPlayfair+Display:400,700%7CRoboto:100,300,400,400i,500,700" />
+            <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600&amp;display=swap" rel="stylesheet" />
+            <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+
+            <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+            <link rel="stylesheet" type="text/css" href="../client/assets/css/ie10-viewport-bug-workaround.css" />
+            <style type="text/css">
+                .ui-rating-star a{
+                    width:25px !important;
+                }
+            </style>
+        </head>
+        <h:form>
+            <!-- Top header start -->
+            <header class="top-header top-header-bg" id="top-header-2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-9 col-sm-7">
+                            <div class="list-inline">
+                                <a href="tel:+91 6353391536"><i class="fa fa-phone"></i>Need Support? +91 6353391536</a>
+                                <a href="mailto:info@realhouse.com"><i class="fa fa-envelope"></i>info@realhouse.com</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-3 col-sm-5">
+                            <ul class="top-social-media pull-right">
+                                
+                                <c:if test="${session.getAttribute('userIDPK')==null}" >
+                                    <li class="mb-0">
+                                        <a href="login.xhtml" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
+                                    </li>
+                                </c:if>
+                                <c:if test="${session.getAttribute('userIDPK')!= null}" >    
+                                    <li class="mb-0">
+                                        <h:commandLink action="#{loginManagedBean.logout()}" class="sign-in"><i class="fa fa-sign-in"></i> logout </h:commandLink>
+                                    </li>
+                                </c:if>
+                                <c:if test="${session.getAttribute('userIDPK')==null}" >
+                                    <li>
+                                        <a href="registration.xhtml" class="sign-in"><i class="fa fa-user"></i> Register</a>
+                                    </li>
+                                </c:if>
+                                <c:if test="${session.getAttribute('userIDPK')!= null}" >
+                                    <li>
+                                        <h:commandLink action="myProfile.xhtml?faces-redirect=true" actionListener="#{userBean.fillUser()}" class="sign-in"><i class="fa fa-user"></i> My Profile </h:commandLink>
+                                    </li>
+                                </c:if>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Top header end -->
+
+            <!-- Main header start -->
+            <header class="main-header">
+                <div class="container">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand logo" href="index.html">
+                            <img src="../client/assets/img/logos/logo.png" alt="logo"/>
+                        </a>
+                        <button class="navbar-toggler" type="button" id="drawer">
+                            <span class="fa fa-bars"></span>
+                        </button>
+                        <div class="navbar-collapse collapse w-100 justify-content-end" id="navbar">
+                            <ul class="navbar-nav ml-auto">
+                                <a class="nav-link" href="index.xhtml" id="navbarDropdownMenuLink">
+                                    HOME
+                                </a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="commercialPropertyList.xhtml" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Commercial Properties
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="residentialPropertyList.xhtml" id="navbarDropdownMenuLink11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Residential Properties
+                                    </a>
+                                </li>
+
+
+                                <a class="nav-link" href="./aboutUs.xhtml" id="navbar5">
+                                    About US
+                                </a>
+
+
+
+                                <a class="nav-link" href="./contactUs.xhtml" id="navbar">
+                                    Contact US
+                                </a>
+
+                                <li class="nav-item">
+                                    <a href="./submitProperty.xhtml?faces-redirect=true" class="nav-link submit-property btn-5"> Submit Property</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            <!-- Main header end -->
+        </h:form>
+    </h:body>
+</html>
+

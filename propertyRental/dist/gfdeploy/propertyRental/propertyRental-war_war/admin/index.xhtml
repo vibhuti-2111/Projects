@@ -1,0 +1,370 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+
+    </h:head>
+    <h:body>
+        <ui:include src="includes/header.xhtml">
+
+        </ui:include>
+
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container row-fluid">
+            <ui:include src="includes/sidebar.xhtml"/>
+            <!-- BEGIN PAGE CONTAINER-->
+            <div class="page-content">
+                <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+                <div id="portlet-config" class="modal hide">
+                    <div class="modal-header">
+                        <button data-dismiss="modal" class="close" type="button"></button>
+                        <h3>Widget Settings</h3>
+                    </div>
+                    <div class="modal-body"> Widget settings form goes here </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="content sm-gutter">
+                    <div class="page-title">
+                        <h3>Dashboard </h3>
+                    </div>
+                    <!-- BEGIN DASHBOARD TILES -->
+                    <div id="container">
+                        <div class="row 2col">
+
+                            <div class="col-md-3 col-sm-6 spacing-bottom-sm spacing-bottom" style="height: 96px; width: 220px; margin: 10px;">
+                                <div class="tiles added-margin" style="background-color: #d39e00">
+                                    <div class="tiles-body">
+                                        <div class="controller" >
+                                            <a href="javascript:;" class="reload" style="color: white;"></a>
+                                            <a href="javascript:;" class="remove"></a>
+                                        </div>
+                                        <div class="tiles-title"> Total Users </div>
+                                        <div class="heading"> <span class="animate-number" data-animation-duration="1000">#{userBean.show_userList().size()}</span> </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6 spacing-bottom-sm spacing-bottom" style="height: 96px; width: 220px; margin: 10px;">
+                                <div class="tiles red added-margin">
+                                    <div class="tiles-body">
+                                        <div class="controller" >
+                                            <a href="javascript:;" class="reload" style="color: white;"></a>
+                                            <a href="javascript:;" class="remove"></a>
+                                        </div>
+                                        <div class="tiles-title"> Total User Requests </div>
+                                        <div class="heading"> <span class="animate-number" data-animation-duration="1000">#{userRequestBean.show_userRequestList().size()}</span> </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6 spacing-bottom-sm spacing-bottom" style="height: 96px; width: 220px; margin: 10px;">
+                                <div class="tiles green added-margin">
+                                    <div class="tiles-body">
+                                        <div class="controller">
+                                            <a href="javascript:;" class="reload"></a>
+                                            <a href="javascript:;" class="remove"></a>
+                                        </div>
+                                        <div class="tiles-title"> Total Properties </div>
+                                        <div class="heading"> <span class="animate-number" data-animation-duration="1000">#{propertyBean.show_property().size()}</span> </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6 spacing-bottom-sm spacing-bottom" style="height: 96px; width: 220px; margin: 10px;">
+                                <div class="tiles blue added-margin">
+                                    <div class="tiles-body">
+                                        <div class="controller">
+                                            <a href="javascript:;" class="reload"></a>
+                                            <a href="javascript:;" class="remove"></a>
+                                        </div>
+                                        <div class="tiles-title"> Commercial Properties </div>
+                                        <div class="heading"> <span class="animate-number" data-animation-duration="1200">#{propertyBean.ListPropertyByType('Commercial').size()}</span> </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6 spacing-bottom-sm spacing-bottom" style="height: 96px; width: 220px; margin: 10px;">
+                                <div class="tiles purple added-margin">
+                                    <div class="tiles-body">
+                                        <div class="controller">
+                                            <a href="javascript:;" class="reload"></a>
+                                            <a href="javascript:;" class="remove"></a>
+                                        </div>
+                                        <div class="tiles-title"> Residential Properties </div>
+                                        <div class="heading"> <span class="animate-number" data-animation-duration="1000">#{propertyBean.ListPropertyByType('Residential').size()}</span> </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <ui:repeat value="#{propertyBean.show_propertyTypeList()}" var="lst">
+                                <div class="col-md-3 col-sm-6 spacing-bottom-sm spacing-bottom" style="height: 96px; width: 220px; margin: 10px;">
+                                    <div class="tiles added-margin" style="background: url('assets/img/card-2.jpg');">
+                                        <div class="tiles-body">
+                                            <div class="controller" >
+                                                <a href="javascript:;" class="reload" style="color: white;"></a>
+                                                <a href="javascript:;" class="remove"></a>
+                                            </div>
+                                            <div class="tiles-title"> Total #{lst.propertySubTypeName} </div>
+                                            <div class="heading"> <span class="animate-number" data-animation-duration="1000">#{propertyBean.showByPropertyType(lst.propertyTypeIDPK).size()}</span> </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </ui:repeat>
+
+                        </div>
+
+                    </div>
+                    <!-- END DASHBOARD TILES -->
+
+
+                </div>
+            </div>
+            <!-- BEGIN CHAT -->
+            <div class="chat-window-wrapper">
+                <div id="main-chat-wrapper" class="inner-content">
+                    <div class="chat-window-wrapper scroller scrollbar-dynamic" id="chat-users">
+                        <div class="chat-header">
+                            <div class="pull-left">
+                                <input type="text" placeholder="search" />
+                            </div>
+                            <div class="pull-right">
+                                <a href="#" class="">
+                                    <div class="iconset top-settings-dark "></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="side-widget">
+                            <div class="side-widget-title">group chats</div>
+                            <div class="side-widget-content">
+                                <div id="groups-list">
+                                    <ul class="groups">
+                                        <li>
+                                            <a href="#">
+                                                <div class="status-icon green"></div>Office work</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="status-icon green"></div>Personal vibes</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="side-widget fadeIn">
+                            <div class="side-widget-title">favourites</div>
+                            <div id="favourites-list">
+                                <div class="side-widget-content">
+                                    <div class="user-details-wrapper active" data-chat-status="online" data-chat-user-pic="../admin/assets/img/profiles/d.jpg" data-chat-user-pic-retina="../admin/assets/img/profiles/d2x.jpg" data-user-name="Jane Smith">
+                                        <div class="user-profile">
+                                            <img src="../admin/assets/img/profiles/d.jpg" alt="" data-src="../admin/assets/img/profiles/d.jpg" data-src-retina="../admin/assets/img/profiles/d2x.jpg" width="35" height="35" />
+                                        </div>
+                                        <div class="user-details">
+                                            <div class="user-name">
+                                                Jane Smith
+                                            </div>
+                                            <div class="user-more">
+                                                Hello you there?
+                                            </div>
+                                        </div>
+                                        <div class="user-details-status-wrapper">
+                                            <span class="badge badge-important">3</span>
+                                        </div>
+                                        <div class="user-details-count-wrapper">
+                                            <div class="status-icon green"></div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="user-details-wrapper" data-chat-status="busy" data-chat-user-pic="../admin/assets/img/profiles/d.jpg" data-chat-user-pic-retina="../admin/assets/img/profiles/d2x.jpg" data-user-name="David Nester" />
+                                    <div class="user-profile">
+                                        <img src="../admin/assets/img/profiles/c.jpg" alt="" data-src="../admin/assets/img/profiles/c.jpg" data-src-retina="../admin/assets/img/profiles/c2x.jpg" width="35" height="35" />
+                                    </div>
+                                    <div class="user-details">
+                                        <div class="user-name">
+                                            David Nester
+                                        </div>
+                                        <div class="user-more">
+                                            Busy, Do not disturb
+                                        </div>
+                                    </div>
+                                    <div class="user-details-status-wrapper">
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="user-details-count-wrapper">
+                                        <div class="status-icon red"></div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="side-widget">
+                        <div class="side-widget-title">more friends</div>
+                        <div class="side-widget-content" id="friends-list">
+                            <div class="user-details-wrapper" data-chat-status="online" data-chat-user-pic="../admin/assets/img/profiles/d.jpg" data-chat-user-pic-retina="assets/img/profiles/d2x.jpg" data-user-name="Jane Smith">
+                                <div class="user-profile">
+                                    <img src="../admin/assets/img/profiles/d.jpg" alt="" data-src="../admin/assets/img/profiles/d.jpg" data-src-retina="assets/img/profiles/d2x.jpg" width="35" height="35" />
+                                </div>
+                                <div class="user-details">
+                                    <div class="user-name">
+                                        Jane Smith
+                                    </div>
+                                    <div class="user-more">
+                                        Hello you there?
+                                    </div>
+                                </div>
+                                <div class="user-details-status-wrapper">
+                                </div>
+                                <div class="user-details-count-wrapper">
+                                    <div class="status-icon green"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="user-details-wrapper" data-chat-status="busy" data-chat-user-pic="../admin/assets/img/profiles/d.jpg" data-chat-user-pic-retina="../admin/assets/img/profiles/d2x.jpg" data-user-name="David Nester">
+                                <div class="user-profile">
+                                    <img src="../admin/assets/img/profiles/h.jpg" alt="" data-src="../admin/assets/img/profiles/h.jpg" data-src-retina="../admin/assets/img/profiles/h2x.jpg" width="35" height="35" />
+                                </div>
+                                <div class="user-details">
+                                    <div class="user-name">
+                                        David Nester
+                                    </div>
+                                    <div class="user-more">
+                                        Busy, Do not disturb
+                                    </div>
+                                </div>
+                                <div class="user-details-status-wrapper">
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="user-details-count-wrapper">
+                                    <div class="status-icon red"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="user-details-wrapper" data-chat-status="online" data-chat-user-pic="../admin/assets/img/profiles/d.jpg" data-chat-user-pic-retina="../admin/assets/img/profiles/d2x.jpg" data-user-name="Jane Smith">
+                                <div class="user-profile">
+                                    <img src="../admin/assets/img/profiles/c.jpg" alt="" data-src="../admin/assets/img/profiles/c.jpg" data-src-retina="../admin/assets/img/profiles/c2x.jpg" width="35" height="35" />
+                                </div>
+                                <div class="user-details">
+                                    <div class="user-name">
+                                        Jane Smith
+                                    </div>
+                                    <div class="user-more">
+                                        Hello you there?
+                                    </div>
+                                </div>
+                                <div class="user-details-status-wrapper">
+                                </div>
+                                <div class="user-details-count-wrapper">
+                                    <div class="status-icon green"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="user-details-wrapper" data-chat-status="busy" data-chat-user-pic="../admin/assets/img/profiles/d.jpg" data-chat-user-pic-retina="../admin/assets/img/profiles/d2x.jpg" data-user-name="David Nester">
+                                <div class="user-profile">
+                                    <img src="../admin/assets/img/profiles/h.jpg" alt="" data-src="../admin/assets/img/profiles/h.jpg" data-src-retina="../admin/assets/img/profiles/h2x.jpg" width="35" height="35" />
+                                </div>
+                                <div class="user-details">
+                                    <div class="user-name">
+                                        David Nester
+                                    </div>
+                                    <div class="user-more">
+                                        Busy, Do not disturb
+                                    </div>
+                                </div>
+                                <div class="user-details-status-wrapper">
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="user-details-count-wrapper">
+                                    <div class="status-icon red"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-window-wrapper" id="messages-wrapper" style="display:none">
+                    <div class="chat-header">
+                        <div class="pull-left">
+                            <input type="text" placeholder="search" />
+                        </div>
+                        <div class="pull-right">
+                            <a href="#" class="">
+                                <div class="iconset top-settings-dark "></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="chat-messages-header">
+                        <div class="status online"></div><span class="semi-bold">Jane Smith(Typing..)</span>
+                        <a href="#" class="chat-back"><i class="icon-custom-cross"></i></a>
+                    </div>
+                    <div class="chat-messages scrollbar-dynamic clearfix">
+                        <div class="inner-scroll-content clearfix">
+                            <div class="sent_time">Yesterday 11:25pm</div>
+                            <div class="user-details-wrapper ">
+                                <div class="user-profile">
+                                    <img src="../admin/assets/img/profiles/d.jpg" alt="" data-src="../admin/assets/img/profiles/d.jpg" data-src-retina="../admin/assets/img/profiles/d2x.jpg" width="35" height="35" />
+                                </div>
+                                <div class="user-details">
+                                    <div class="bubble">
+                                        Hello, You there?
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="sent_time off">Yesterday 11:25pm</div>
+                            </div>
+                            <div class="user-details-wrapper ">
+                                <div class="user-profile">
+                                    <img src="../admin/assets/img/profiles/d.jpg" alt="" data-src="../admin/assets/img/profiles/d.jpg" data-src-retina="../admin/assets/img/profiles/d2x.jpg" width="35" height="35" />
+                                </div>
+                                <div class="user-details">
+                                    <div class="bubble">
+                                        How was the meeting?
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="sent_time off">Yesterday 11:25pm</div>
+                            </div>
+                            <div class="user-details-wrapper ">
+                                <div class="user-profile">
+                                    <img src="../admin/assets/img/profiles/d.jpg" alt="" data-src="../admin/assets/img/profiles/d.jpg" data-src-retina="../admin/assets/img/profiles/d2x.jpg" width="35" height="35" />
+                                </div>
+                                <div class="user-details">
+                                    <div class="bubble">
+                                        Let me know when you free
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="sent_time off">Yesterday 11:25pm</div>
+                            </div>
+                            <div class="sent_time ">Today 11:25pm</div>
+                            <div class="user-details-wrapper pull-right">
+                                <div class="user-details">
+                                    <div class="bubble sender">
+                                        Let me know when you free
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="sent_time off">Sent On Tue, 2:45pm</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input-wrapper" style="display:none">
+                        <textarea id="chat-message-input" rows="1" placeholder="Type your message"></textarea>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <!-- END CHAT -->
+
+        <!-- END CONTAINER -->
+        <ui:include src="includes/footer.xhtml" />
+    </h:body>
+</html>
+

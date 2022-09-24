@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+
+    </h:head>
+    <h:body>
+        <ui:include src="includes/header.xhtml" />
+
+        <div class="page-container row-fluid">
+            <ui:include src="includes/sidebar.xhtml"/>
+            <div class="page-content">
+                <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+                <div id="portlet-config" class="modal hide">
+                    <div class="modal-header">
+                        <button data-dismiss="modal" class="close" type="button"></button>
+                        <h3>Widget Settings</h3>
+                    </div>
+                    <div class="modal-body">Widget settings form goes here</div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="content">
+                    <div class="page-title"> <i class="fa fa-building"></i>
+                        <h3>Property Images </h3>
+                    </div>
+                    <h:form class="form-no-horizontal-spacing" id="form-condensed" enctype="multipart/form-data">
+                        <p:commandButton value="Add Image" type="button" style="background-color: green; color: white" class="btn btn-primary" onclick="PF('sample').show();" />  
+                        <p:dialog header="Add Property Images" widgetVar="sample" minHeight="100" minWidth="180">  
+                            <div class="form-group">
+                                <h:inputFile value="#{propertyImageBean.filelist}" a:multiple="true"/>
+                            </div> 
+                            <div class="form-actions">
+                                <div class="pull-right">
+                                    <h:commandButton  value="Submit" class="btn btn-success btn-cons" action="#{propertyImageBean.insertPropertyImage_click()}">
+                                    </h:commandButton>
+                                    <h:commandButton  value="Cancel" class="btn btn-white btn-cons" action="#{propertyImageBean.clear()}">
+                                    </h:commandButton>
+
+                                </div>
+                            </div>
+                        </p:dialog>
+
+                        <br/> <br/>
+                        
+                            <div class="superbox">
+                                <ui:repeat value="#{propertyImageBean.show_propertyImageList()}" var="data">
+                                    <img src="/propertyRental-war/uploads/#{data.propertyImage}"  alt="" class="superbox-img" style="width: 550px;height: 380px;border: 3px;padding: 20px;"/>  
+                                    <h:commandLink action="#{propertyImageBean.deletePropertyImage_click(data.propertyImageIDPK)}" class="badge badge-important" style="padding: 5px;" ><i class="fa fa-times"></i></h:commandLink>
+                                </ui:repeat>
+                            </div>
+                        
+                    </h:form>
+                    <!-- END PAGE -->
+                </div>
+            </div>
+            <ui:include src="includes/footer.xhtml" />
+        </div>
+    </h:body>
+</html>
+

@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+
+    </h:head>
+    <h:body>
+        <ui:include src="includes/header.xhtml"></ui:include>
+        <div class="page_loader"></div>
+        <!-- Sub banner start -->
+        <div class="sub-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <h1>Favorite Property</h1>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="breadcrumb-area">
+                            <ul>
+                                <li><a href="index.xhtml">Index</a></li>
+                                <li><span>/</span>Favorite Property</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sub Banner end -->
+
+        <!-- My Property start -->
+        <div class="my-properties content-area">
+            <div class="container">
+                <h:form enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-12 col-sm-12">
+                            <!-- Avatar start -->
+                            <div class="edit-profile-photo">
+                                <img src="/propertyRental-war/uploads/#{userBean.grfile}" style="height: 450px; width: 305px;" class="img-fluid"/>
+                                <div class="change-photo-btn">
+                                    <div class="photoUpload">
+                                        <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                        <h:inputFile value="#{userBean.file}" class="upload"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Avatar end -->
+                            <!-- My account box start -->
+                            <div class="my-account-box">
+                                <ul>
+                                    <li>
+                                        <a href="my-profile.html" class="active">
+                                            <i class="flaticon-people"></i>My Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="favoriteProperty.xhtml">
+                                            <i class="flaticon-favorite"></i>Favorite Property
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="myProperty.xhtml">
+                                            <i class="flaticon-internet"></i>My Property
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="submitProperty.xhtml">
+                                            <i class="flaticon-cross"></i>Submit New Property
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="change-password.html">
+                                            <i class="flaticon-lock"></i>Change Password
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <h:commandLink action="#{loginManagedBean.logout()}">
+                                            <i class="flaticon-exit"></i> log out
+                                        </h:commandLink>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- My account box end -->
+                        </div>
+                        <div class="col-lg-9 col-md-12 col-sm-12">
+                            <div class="my-address">
+                                <h3 class="heading-2">Chat</h3>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class=""></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="form-group message">
+                                            <h:inputTextarea class="form-control" value="#{chatBean.chatText}" id="desc" pt:placeholder="Enter Message Here..."/>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <br/> 
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <h:commandButton type="submit" class="btn-4 btn-round-3" value=" Send " action="#{chatBean.insertChat_click()}">
+                                            
+                                        </h:commandButton>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+        <!-- My Property end -->
+        <ui:include src="includes/footer.xhtml"></ui:include>
+    </h:body>
+</html>
+
